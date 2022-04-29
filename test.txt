@@ -1,0 +1,3 @@
+To jest test dodawania
+
+Test zmiany: 1234567890
