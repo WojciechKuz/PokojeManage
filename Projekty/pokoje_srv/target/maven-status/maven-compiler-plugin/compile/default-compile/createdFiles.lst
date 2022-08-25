@@ -1,0 +1,6 @@
+com\company\pokoje_srv\PokojeSrvApplication.class
+com\company\pokoje_srv\rekordy\Pracownicy.class
+com\company\pokoje_srv\rekordy\Biurka.class
+com\company\pokoje_srv\rekordy\WolnePokoje.class
+com\company\pokoje_srv\UniversalController.class
+com\company\pokoje_srv\rekordy\Pokoje.class
