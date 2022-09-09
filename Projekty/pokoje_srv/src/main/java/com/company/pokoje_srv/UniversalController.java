@@ -62,7 +62,6 @@ public class UniversalController {
     }
 
 
-
     // w POST, PUT, DELETE można wewnątrz rozpoznać o jaką tabelę chodzi
     @PostMapping("/")
     void addRecord(@RequestParam(value = "table", defaultValue = "Pokoje") String table){
@@ -79,4 +78,5 @@ public class UniversalController {
 
         //todo: OTRZYMANO WIADOMOŚĆ. odczytać dane, zaktualizować bazę danych
     }
+
 }

@@ -36,4 +36,16 @@ public class Pokoje {
     public int getIle_biurek() {
         return ile_biurek;
     }
+
+    @Override
+    public String toString() {
+        return "Pokoje{" +
+                "id=" + id +
+                ", nr_pokoju=" + nr_pokoju +
+                ", budynek=" + budynek +
+                ", nr_tel='" + nr_tel + '\'' +
+                ", przeznaczenie='" + przeznaczenie + '\'' +
+                ", ile_biurek=" + ile_biurek +
+                '}';
+    }
 }
