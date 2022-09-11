@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.lang.Object;
 import java.util.Date;
 
+// URUCHOMIENIE SERWERA: .\mvnw spring-boot:run
+
 @RestController
 public class UniversalController {
     /* klient może wysłać:
