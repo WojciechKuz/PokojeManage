@@ -11,7 +11,7 @@ public class WolnePokoje {
     Integer ile_wolnych;    // ile jest wolnych biurek
     Integer ile_biurek;
 
-    public int getNr_pokoju() {
+    public Integer getNr_pokoju() {
         return nr_pokoju;
     }
     public String getBudynek() {
@@ -20,10 +20,10 @@ public class WolnePokoje {
     public String getPrzeznaczenie() {
         return przeznaczenie;
     }
-    public int getIle_wolnych() {
+    public Integer getIle_wolnych() {
         return ile_wolnych;
     }
-    public int getIle_biurek() {
+    public Integer getIle_biurek() {
         return ile_biurek;
     }
 
