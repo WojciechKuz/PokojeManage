@@ -69,11 +69,11 @@ public class UniversalController {
     Integer postRecord(@RequestBody Pokoje pok, @PathVariable String mode) {
     	
     	switch(mode) {
-    	case "add" -> {
+    	    case "add" -> {
     			pok.setId(null);
     			pokojeRepo.save(pok);
     		}
-    	case "edit" -> {
+    	    case "edit" -> {
     			pokojeRepo.save(pok);
     		}
     	}
@@ -83,11 +83,11 @@ public class UniversalController {
     Integer postRecord(@RequestBody Pracownicy pra, @PathVariable String mode) {
     	
     	switch(mode) {
-    	case "add" -> {
+    	    case "add" -> {
     			pra.setId(null);
     			pracownicyRepo.save(pra);
     		}
-    	case "edit" -> {
+    	    case "edit" -> {
     			pracownicyRepo.save(pra);
     		}
     	}
@@ -97,11 +97,11 @@ public class UniversalController {
     Integer postRecord(@RequestBody Biurka biu, @PathVariable String mode) {
     	
     	switch(mode) {
-    	case "add" -> {
+    	    case "add" -> {
     			biu.setIdb(null);
     			biurkaRepo.save(biu);
     		}
-    	case "edit" -> {
+    	    case "edit" -> {
     			biurkaRepo.save(biu);
     		}
     	}
