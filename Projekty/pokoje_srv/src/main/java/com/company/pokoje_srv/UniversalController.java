@@ -1,82 +1,124 @@
 package com.company.pokoje_srv;
-import com.company.pokoje_srv.rekordy.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
+import com.company.pokoje_srv.rekordy.*;
+import com.company.pokoje_srv.repozytoria.*;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Vector;
+import java.util.ArrayList;
+import java.lang.Object;
+import java.util.Date;
 
 @RestController
 public class UniversalController {
     /* klient może wysłać:
-    get - dane tabeli
-    post - dodaj rekord
-    put - edytuj rekord
-    delete - usuń rekord
+    get - otrzymaj dane tabeli		/tabela
+    post - dodaj lub edytuj rekord	/tabela/add	 /tabela/edit
+    delete - usuń rekord			/tabela/id
+    
+    (nazwa tabeli w requescie małymi literami)
+    
+    put - nie ma, bo nie zwraca kodu
      */
 
+    @Autowired
+    public PokojeRepo pokojeRepo;
+    @Autowired
+    public PracownicyRepo pracownicyRepo;
+    @Autowired
+    public BiurkaRepo biurkaRepo;
+    
+    
+    
     // do GET muszą być oddzielne, bo różnią się typem zwracanym
-
-    @GetMapping("/table=Pokoje") // /table=Pokoje
-    public Pokoje[] sendPokoje(){
-
-        //todo: zwrócić tabelę pokoje (tablica)
-
-
-        //tymczasowe: (mam nadzieję, że prześle tablicę z zawartością)
-        Pokoje[] temptab = {new Pokoje(1034,100, 5, "+48 224 444 444", "pomieszczenie gospodarcze", 1),
-                            new Pokoje(519,101, 3, "+48 224 444 000", "serwerownia", 2)};
-        return temptab;
+    @GetMapping("/pokoje")
+    public Pokoje[] getPokoje(){
+        ArrayList<Pokoje> tab = (ArrayList<Pokoje>) pokojeRepo.findAll();
+        return tab.toArray(new Pokoje[tab.size()]);
     }
 
-    @GetMapping("/table=Pracownicy")
-    public Pracownicy[] sendPracownicy(){
-
-        //todo: zwrócić tabelę pracownicy (tablica)
-
-
-        //tymczasowe:
-        Pracownicy[] temptab = {new Pracownicy(007, "imie","nazwisko","+48 224 444 444", "sprzatacz",new Date(12230), new Date(12346))};
-        return temptab;
+    @GetMapping("/pracownicy")
+    public Pracownicy[] getPracownicy(){
+        ArrayList<Pracownicy> tab = (ArrayList<Pracownicy>) pracownicyRepo.findAll();
+        return tab.toArray(new Pracownicy[tab.size()]);
     }
 
-    @GetMapping("/table=Biurka")
-    public Biurka[] sendBiurka(){
-
-        //todo: zwrócić dane kto zajmuje pokoje (tablica)
-
-
-        //tymczasowe:
-        Biurka[] temptab = {new Biurka("imie","nazwisko","+48 224 444 444", 0,new Date(12234), new Date(12345))};
-        return temptab;
+    @GetMapping("/biurka")
+    public Biurka[] getBiurka(){
+        ArrayList<Biurka> tab = (ArrayList<Biurka>) biurkaRepo.findAll();
+        return tab.toArray(new Biurka[tab.size()]);
     }
 
-    @GetMapping("table=Wolne")
-    public WolnePokoje[] sendWolne(){
+    @GetMapping("/wolne")
+    public WolnePokoje[] getWolne() {
 
         //todo: zwrócić dane ile jest jeszcze wolnych biurek w pokojach (tablica)
-
-
-        //tymczasowe:
-        WolnePokoje[] temptab = {new WolnePokoje(101, 3, "serwerownia", 0, 2)};
-        return temptab;
+        //
+    	System.out.println("UWAGA! \"GET /wolne\" nie jest jeszcze obsługiwane.");
+    	return new WolnePokoje[1]; // tymczasowe
     }
 
-
-    // w POST, PUT, DELETE można wewnątrz rozpoznać o jaką tabelę chodzi
-    @PostMapping("/")
-    void addRecord(@RequestParam(value = "table", defaultValue = "Pokoje") String table){
-
-        //todo: OTRZYMANO WIADOMOŚĆ. odczytać dane, zaktualizować bazę danych
+    // POST - dodawanie i edycja
+    @PostMapping("/pokoje/{mode}")
+    Integer postRecord(@RequestBody Pokoje pok, @PathVariable String mode) {
+    	
+    	switch(mode) {
+    	case "add" -> {
+    			pok.setId(null);
+    			pokojeRepo.save(pok);
+    		}
+    	case "edit" -> {
+    			pokojeRepo.save(pok);
+    		}
+    	}
+    	return 0;
     }
-    @PutMapping("/")
-    void editRecord(@RequestParam(value = "table", defaultValue = "Pokoje") String table){
-
-        //todo: OTRZYMANO WIADOMOŚĆ. odczytać dane, zaktualizować bazę danych
+    @PostMapping("/pracownicy/{mode}")
+    Integer postRecord(@RequestBody Pracownicy pra, @PathVariable String mode) {
+    	
+    	switch(mode) {
+    	case "add" -> {
+    			pra.setId(null);
+    			pracownicyRepo.save(pra);
+    		}
+    	case "edit" -> {
+    			pracownicyRepo.save(pra);
+    		}
+    	}
+    	return 0;
     }
-    @DeleteMapping("/")
-    void deleteRecord(@RequestParam(value = "table", defaultValue = "Pokoje") String table){
-
-        //todo: OTRZYMANO WIADOMOŚĆ. odczytać dane, zaktualizować bazę danych
+    @PostMapping("/biurka/{mode}")
+    Integer postRecord(@RequestBody Biurka biu, @PathVariable String mode) {
+    	
+    	switch(mode) {
+    	case "add" -> {
+    			biu.setIdb(null);
+    			biurkaRepo.save(biu);
+    		}
+    	case "edit" -> {
+    			biurkaRepo.save(biu);
+    		}
+    	}
+    	return 0;
+    }
+    
+    
+    // PUT NIE MA! zamiast tego używać POST /{tabela}/edit
+    
+    
+    // DELETE
+    @DeleteMapping("/{table}/{id}")
+    void deleteRecord(@PathVariable String table, @PathVariable Integer id){
+    	switch(table) {
+    		case "pokoje" -> pokojeRepo.deleteById(id);
+    		case "pracownicy" -> pracownicyRepo.deleteById(id);
+    		case "biurka" -> biurkaRepo.deleteById(id);
+    	}
     }
 
+    
 }
