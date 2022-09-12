@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Dodaj nowego pracownika:</h1>
-<form action="#" th:action="@{/pracownicy}" th:object="${dane}" method="post">
+<form action="#" th:action="@{/pracownikDodano}" th:object="${dane}" method="post">
     Imie: <input type="text" th:field="*{imie}"><br>
     Nazwisko: <input type="text" th:field="*{nazwisko}"><br>
     Numer telefonu: <input type="number" th:field="*{nr_tel_kom}"><br>

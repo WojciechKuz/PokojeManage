@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 public class WebController
@@ -43,6 +44,8 @@ public class WebController
 
         return "pokoje";
     }
+
+
 
     @RequestMapping("/table=PracownicyTest")
     String WylistujPracownikow(Model model)
@@ -85,18 +88,39 @@ public class WebController
         return "dodajPokoj";
     }
 
-    @RequestMapping("/table=DodajPracownika")
+    @RequestMapping("/pokojDodano")
+    public String dodajRekord(@ModelAttribute Pokoje dane, Model model)
+    {
+        addRecord(dane);
+        return "dodanoRekord";
+    }
+
+    @RequestMapping("/pracownikDodano")
+    public String dodajRekord(@ModelAttribute Pracownicy dane, Model model)
+    {
+        addRecord(dane);
+        return "dodanoRekord";
+    }
+
+    @RequestMapping("/biurkoDodano")
+    public String dodajRekord(@ModelAttribute Biurka dane, Model model)
+    {
+        addRecord(dane);
+        return "dodanoRekord";
+    }
+
+    @RequestMapping("/pracownikDodano")
     public String dodajPracownika(Model model)
     {
         model.addAttribute("dane", new Pracownicy());
-        return "dodajPracownika";
+        return "dodanoRekord";
     }
 
-    @RequestMapping("/table=DodajBiurko")
+    @RequestMapping("/biurkoDodano")
     public String dodajBiurko(Model model)
     {
         model.addAttribute("dane", new Biurka());
-        return "dodajBiurko";
+        return "dodanoRekord";
     }
 
 

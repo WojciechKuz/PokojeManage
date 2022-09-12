@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Dodaj nowe biurko:</h1>
-<form action="#" th:action="@{/biurka}" th:object="${dane}" method="post">
+<form action="#" th:action="@{/biurkoDodano}" th:object="${dane}" method="post">
     Zajęte od: <input type="date" th:field="*{zajete_od}"><br>
     Zajęte do: <input type="date" th:field="*{zajete_do}"><br>
     Pracownicy: <input type="text" th:field="*{pracownicy}"><br>

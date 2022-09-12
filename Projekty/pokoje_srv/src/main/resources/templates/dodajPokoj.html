@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Dodaj nowy pokój:</h1>
-<form action="#" th:action="@{/pokoje}" th:object="${dane}" method="post">
+<form action="#" th:action="@{/pokojeDodano}" th:object="${dane}" method="post">
     Numer pokoju: <input type="number" th:field="*{nr_pokoju}"><br>
     Adres budynku: <input type="text" th:field="*{budynek}"><br>
     Numer telefonu: <input type="text" th:field="*{nr_tel}"><br>
