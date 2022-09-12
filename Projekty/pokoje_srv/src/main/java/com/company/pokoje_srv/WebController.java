@@ -4,6 +4,7 @@ import com.company.pokoje_srv.rekordy.*;
 import com.company.pokoje_srv.repozytoria.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +29,21 @@ public class WebController
         return "menu";
     }
 
+
+    //Usuwanie pracowników po przekroczeniu terminu zatrudnienia
+    /*
+    @Transactional
+    public void UsuwaniePracownikowPoTerminie()
+    {
+        Date dateNow = new Date();
+        List<Pracownicy> listaPracownicyDoUsuniecia = List.of(getPracownicy());
+        for (Pracownicy prac : listaPracownicyDoUsuniecia)
+        {
+            pracownicyRepo.deleteByZatrudnienieDoBefore(dateNow);
+        }
+    }
+    */
+
     @RequestMapping("/table=Pokoje")
     String WylistujPokoje(Model model)
     {
@@ -45,9 +61,15 @@ public class WebController
         return "pokoje";
     }
 
+
+
     @RequestMapping("/table=Pracownicy")
     String WylistujPracownikow(Model model)
     {
+        //Najpierw usuwanie pracowników, którzy przekroczyli czas zatrudnienia
+        //UsuwaniePracownikowPoTerminie();
+
+        //Pobieranie zaktualizowanej listy
         List<Pracownicy> listaPracownicy = List.of(getPracownicy());
 
         //Wypisanie zawartości na konsolę
@@ -130,7 +152,7 @@ public class WebController
     public String dodajRekord(@ModelAttribute Pokoje dane, Model model)
     {
         addRecord(dane);
-        return "pokoje";
+        return "dodanoRekord";
     }
     @RequestMapping("/pokojEdytowano")
     public String edytujRekord(@ModelAttribute Pokoje dane, Model model)
@@ -143,7 +165,7 @@ public class WebController
     public String dodajRekord(@ModelAttribute Pracownicy dane, Model model)
     {
         addRecord(dane);
-        return "pracownicy";
+        return "dodanoRekord";
     }
     @RequestMapping("/pracownikEdytowano")
     public String edytujRekord(@ModelAttribute Pracownicy dane, Model model)
@@ -156,7 +178,7 @@ public class WebController
     public String dodajRekord(@ModelAttribute Biurka dane, Model model)
     {
         addRecord(dane);
-        return "biurko";
+        return "dodanoRekord";
     }
     @RequestMapping("/biurkoEdytowano")
     public String edytujRekord(@ModelAttribute Biurka dane, Model model)
