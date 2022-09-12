@@ -125,21 +125,21 @@ public class WebController
     public String dodajRekord(@ModelAttribute Pokoje dane, Model model)
     {
         addRecord(dane);
-        return "dodanoRekord";
+        return "pokoje";
     }
 
     @RequestMapping("/pracownikDodano")
     public String dodajRekord(@ModelAttribute Pracownicy dane, Model model)
     {
         addRecord(dane);
-        return "dodanoRekord";
+        return "pracownicy";
     }
 
     @RequestMapping("/biurkoDodano")
     public String dodajRekord(@ModelAttribute Biurka dane, Model model)
     {
         addRecord(dane);
-        return "dodanoRekord";
+        return "biurko";
     }
 
 
@@ -212,7 +212,7 @@ public class WebController
     }
 
 
-
+    /*
     // POST - dodawanie i edycja
     @PostMapping("/pokoje/{mode}")
     Integer postRecord(@RequestBody Pokoje pok, @PathVariable String mode) {
@@ -253,6 +253,7 @@ public class WebController
         }
         return rv;
     }
+    */
 
     // PUT NIE MA! zamiast tego używać POST /{tabela}/edit
 
