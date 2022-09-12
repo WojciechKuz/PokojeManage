@@ -23,6 +23,9 @@ public class WebController
     @Autowired
     public BiurkaRepo biurkaRepo;
 
+    Pokoje pokoje;  // zawierają obiekt tylko podczas wypełniania formularza, inaczej są null
+    Pracownicy pracownicy;
+    Biurka biurka;
     
     @RequestMapping("/table=Pokoje")
     String WylistujPokoje(Model model)
@@ -87,21 +90,24 @@ public class WebController
     @RequestMapping("/table=DodajPokoj")
     public String dodajPokoj(Model model)
     {
-        model.addAttribute("dane", new Pokoje());
+        pokoje = new Pokoje();
+        model.addAttribute("dane", pokoje);
         return "dodajPokoj";
     }
 
     @RequestMapping("/table=DodajPracownik")
     public String dodajPracownika(Model model)
     {
-        model.addAttribute("dane", new Pracownicy());
+        pracownicy = new Pracownicy();
+        model.addAttribute("dane", pracownicy);
         return "dodajPracownika";
     }
 
     @RequestMapping("/table=DodajBiurko")
     public String dodajBiurko(Model model)
     {
-        model.addAttribute("dane", new Biurka());
+        biurka = new Biurka();
+        model.addAttribute("dane", biurka);
         return "dodajBiurko";
     }
 
@@ -111,21 +117,24 @@ public class WebController
     @RequestMapping("/pokojDodano")
     public String dodajRekord(@ModelAttribute Pokoje dane, Model model)
     {
-        addRecord(dane);
+        addRecord(pokoje);
+        pokoje = null;
         return "pokoje";
     }
 
     @RequestMapping("/pracownikDodano")
     public String dodajRekord(@ModelAttribute Pracownicy dane, Model model)
     {
-        addRecord(dane);
+        addRecord(pracownicy);
+        pracownicy = null;
         return "pracownicy";
     }
 
     @RequestMapping("/biurkoDodano")
     public String dodajRekord(@ModelAttribute Biurka dane, Model model)
     {
-        addRecord(dane);
+        addRecord(biurko);
+        biurko = null;
         return "biurko";
     }
 
