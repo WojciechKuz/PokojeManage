@@ -1,5 +1,7 @@
 package com.company.pokoje_srv.rekordy;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
@@ -41,9 +43,11 @@ public class Pracownicy {
     public String getRodzaj_pracown() {
         return rodzaj_pracown;
     }
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     public Date getZatrudnienieOd() {
         return zatrudnienieOd;
     }
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     public Date getZatrudnienieDo() { return zatrudnienieDo; }
     public List<Biurka> getBiurka() {
         return biurka;
@@ -72,5 +76,19 @@ public class Pracownicy {
     }
     public void setBiurka(List<Biurka> biurka) {
         this.biurka = biurka;
+    }
+
+    @Override
+    public String toString() {
+        return "Pracownicy{" +
+                "id=" + id +
+                ", imie='" + imie + '\'' +
+                ", nazwisko='" + nazwisko + '\'' +
+                ", nr_tel_kom='" + nr_tel_kom + '\'' +
+                ", rodzaj_pracown='" + rodzaj_pracown + '\'' +
+                ", zatrudnienieOd=" + zatrudnienieOd +
+                ", zatrudnienieDo=" + zatrudnienieDo +
+                ", biurka=" + biurka +
+                '}';
     }
 }

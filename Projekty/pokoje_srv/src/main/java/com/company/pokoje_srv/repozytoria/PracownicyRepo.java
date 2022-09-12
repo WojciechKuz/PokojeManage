@@ -7,5 +7,5 @@ import java.util.Date;
 
 public interface PracownicyRepo extends JpaRepository<Pracownicy, Integer>
 {
-    Pracownicy deleteByZatrudnienieDoBefore(Date date);
+    //Pracownicy deleteByZatrudnienieDoBefore(Date date);
 }

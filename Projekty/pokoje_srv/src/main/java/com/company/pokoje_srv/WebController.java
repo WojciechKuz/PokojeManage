@@ -25,6 +25,7 @@ public class WebController
 
 
     //Usuwanie pracowników po przekroczeniu terminu zatrudnienia
+    /*
     @Transactional
     public void UsuwaniePracownikowPoTerminie()
     {
@@ -35,7 +36,7 @@ public class WebController
             pracownicyRepo.deleteByZatrudnienieDoBefore(dateNow);
         }
     }
-
+    */
 
     @RequestMapping("/table=Pokoje")
     String WylistujPokoje(Model model)
@@ -60,7 +61,7 @@ public class WebController
     String WylistujPracownikow(Model model)
     {
         //Najpierw usuwanie pracowników, którzy przekroczyli czas zatrudnienia
-        UsuwaniePracownikowPoTerminie();
+        //UsuwaniePracownikowPoTerminie();
 
         //Pobieranie zaktualizowanej listy
         List<Pracownicy> listaPracownicy = List.of(getPracownicy());
@@ -145,7 +146,7 @@ public class WebController
     public String dodajRekord(@ModelAttribute Pokoje dane, Model model)
     {
         addRecord(dane);
-        return "pokoje";
+        return "dodanoRekord";
     }
     @RequestMapping("/pokojEdytowano")
     public String edytujRekord(@ModelAttribute Pokoje dane, Model model)
@@ -158,7 +159,7 @@ public class WebController
     public String dodajRekord(@ModelAttribute Pracownicy dane, Model model)
     {
         addRecord(dane);
-        return "pracownicy";
+        return "dodanoRekord";
     }
     @RequestMapping("/pracownikEdytowano")
     public String edytujRekord(@ModelAttribute Pracownicy dane, Model model)
@@ -171,7 +172,7 @@ public class WebController
     public String dodajRekord(@ModelAttribute Biurka dane, Model model)
     {
         addRecord(dane);
-        return "biurko";
+        return "dodanoRekord";
     }
     @RequestMapping("/biurkoEdytowano")
     public String edytujRekord(@ModelAttribute Biurka dane, Model model)

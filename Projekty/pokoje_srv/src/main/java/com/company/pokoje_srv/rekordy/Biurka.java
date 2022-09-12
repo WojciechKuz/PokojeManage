@@ -55,4 +55,15 @@ public class Biurka {
     public void setPokoje(Pokoje pokoje) {
         this.pokoje = pokoje;
     }
+
+    @Override
+    public String toString() {
+        return "Biurka{" +
+                "idb=" + idb +
+                ", zajete_od=" + zajete_od +
+                ", zajete_do=" + zajete_do +
+                ", pracownicy=" + pracownicy +
+                ", pokoje=" + pokoje +
+                '}';
+    }
 }
