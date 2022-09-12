@@ -23,7 +23,11 @@ public class WebController
     @Autowired
     public BiurkaRepo biurkaRepo;
 
-    
+    @RequestMapping("/menu")
+    String wyswietlMenu() {
+        return "menu";
+    }
+
     @RequestMapping("/table=Pokoje")
     String WylistujPokoje(Model model)
     {
@@ -40,8 +44,6 @@ public class WebController
 
         return "pokoje";
     }
-
-
 
     @RequestMapping("/table=Pracownicy")
     String WylistujPracownikow(Model model)
