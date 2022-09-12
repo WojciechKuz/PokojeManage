@@ -4,13 +4,13 @@ import com.company.pokoje_srv.rekordy.*;
 import com.company.pokoje_srv.repozytoria.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @Controller
 public class WebController
@@ -23,14 +23,23 @@ public class WebController
     @Autowired
     public BiurkaRepo biurkaRepo;
 
-    
+
+    //Usuwanie pracowników po przekroczeniu terminu zatrudnienia
+    @Transactional
+    public void UsuwaniePracownikowPoTerminie()
+    {
+        Date dateNow = new Date();
+        List<Pracownicy> listaPracownicyDoUsuniecia = List.of(getPracownicy());
+        for (Pracownicy prac : listaPracownicyDoUsuniecia)
+        {
+            pracownicyRepo.deleteByZatrudnienieDoBefore(dateNow);
+        }
+    }
+
+
     @RequestMapping("/table=Pokoje")
     String WylistujPokoje(Model model)
     {
-        //testowa lista
-        //Pokoje[] temptab = {new Pokoje(1034,100, 5, "+48 224 444 444", "pomieszczenie gospodarcze", 1),
-        //        new Pokoje(519,101, 3, "+48 224 444 000", "serwerownia", 2)};
-
         List<Pokoje> listaPokoi = List.of(getPokoje());
 
         //Wypisanie zawartości na konsolę
@@ -50,6 +59,10 @@ public class WebController
     @RequestMapping("/table=Pracownicy")
     String WylistujPracownikow(Model model)
     {
+        //Najpierw usuwanie pracowników, którzy przekroczyli czas zatrudnienia
+        UsuwaniePracownikowPoTerminie();
+
+        //Pobieranie zaktualizowanej listy
         List<Pracownicy> listaPracownicy = List.of(getPracownicy());
 
         //Wypisanie zawartości na konsolę
@@ -128,7 +141,6 @@ public class WebController
         addRecord(dane);
         return "dodanoRekord";
     }
-
 
 
     // // // // // DOSTĘP DO DANYCH // // // // //

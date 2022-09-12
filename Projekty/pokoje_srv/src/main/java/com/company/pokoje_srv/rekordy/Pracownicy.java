@@ -21,8 +21,8 @@ public class Pracownicy {
     private String nazwisko;
     private String nr_tel_kom;
     private String rodzaj_pracown;
-    private Date zatrudnienie_od;
-    private Date zatrudnienie_do;
+    private Date zatrudnienieOd;
+    private Date zatrudnienieDo;
     @OneToMany(mappedBy ="pracownicy")
     private List<Biurka> biurka;
 
@@ -41,12 +41,10 @@ public class Pracownicy {
     public String getRodzaj_pracown() {
         return rodzaj_pracown;
     }
-    public Date getZatrudnienie_od() {
-        return zatrudnienie_od;
+    public Date getZatrudnienieOd() {
+        return zatrudnienieOd;
     }
-    public Date getZatrudnienie_do() {
-        return zatrudnienie_do;
-    }
+    public Date getZatrudnienieDo() { return zatrudnienieDo; }
     public List<Biurka> getBiurka() {
         return biurka;
     }
@@ -66,11 +64,11 @@ public class Pracownicy {
     public void setRodzaj_pracown(String rodzaj_pracown) {
         this.rodzaj_pracown = rodzaj_pracown;
     }
-    public void setZatrudnienie_od(Date zatrudnienie_od) {
-        this.zatrudnienie_od = zatrudnienie_od;
+    public void setZatrudnienieOd(Date zatrudnienieOd) {
+        this.zatrudnienieOd = zatrudnienieOd;
     }
-    public void setZatrudnienie_do(Date zatrudnienie_do) {
-        this.zatrudnienie_do = zatrudnienie_do;
+    public void setZatrudnienieDo(Date zatrudnienieDo) {
+        this.zatrudnienieDo = zatrudnienieDo;
     }
     public void setBiurka(List<Biurka> biurka) {
         this.biurka = biurka;
