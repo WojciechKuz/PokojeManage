@@ -1,19 +1,28 @@
 package com.company.pokoje_srv;
 
-import com.company.pokoje_srv.rekordy.Biurka;
-import com.company.pokoje_srv.rekordy.Pokoje;
-import com.company.pokoje_srv.rekordy.Pracownicy;
+import com.company.pokoje_srv.rekordy.*;
+import com.company.pokoje_srv.repozytoria.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class WebController
 {
+    
+    @Autowired
+    public PokojeRepo pokojeRepo;
+    @Autowired
+    public PracownicyRepo pracownicyRepo;
+    @Autowired
+    public BiurkaRepo biurkaRepo;
+
+    
     @RequestMapping("/table=PokojeTest")
     String WylistujPokoje(Model model)
     {
