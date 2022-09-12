@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Zarządzanie pokojami</title>
+</head>
+<body>
+<h1>Zarządzanie pokojami - Biurka</h1>
+<br>
+<h3>Lista pokoi:</h3>
+<br />
+<table border="1">
+  <tr>
+    <td>Zajęte od</td>
+    <td>Zajęte do</td>
+    <td>Pracownicy</td>
+    <td>Pokoje</td>
+  </tr>
+  <tr th:each="biur:${biurkaList}">
+    <td th:text="${biur.zajete_od}">zajete od</td>
+    <td th:text="${biur.zajete_do}">zajete do</td>
+    <td th:text="${biur.pracownicy}">pracownicy</td>
+    <td th:text="${biur.pokoje}">pokoje</td>
+  </tr>
+</table>
+</body>
+</html>

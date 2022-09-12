@@ -1,17 +1,12 @@
 package com.company.pokoje_srv;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.company.pokoje_srv.rekordy.*;
 import com.company.pokoje_srv.repozytoria.*;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Vector;
+
 import java.util.ArrayList;
-import java.lang.Object;
-import java.util.Date;
 
 // URUCHOMIENIE SERWERA: .\mvnw spring-boot:run
 
