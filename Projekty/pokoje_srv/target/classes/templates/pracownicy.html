@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Zarządzanie pokojami</title>
+</head>
+<body>
+<h1>Zarządzanie pokojami - Pracownicy</h1>
+<br>
+<h3>Lista pracowników:</h3>
+<br />
+<table border="1">
+    <tr>
+        <td rowspan="2">Imię</td>
+        <td rowspan="2">Nazwisko</td>
+        <td rowspan="2">Telefon</td>
+        <td rowspan="2">Rodzaj Pracy</td>
+        <td colspan="2">Zatrudniony</td>
+    </tr>
+    <tr>
+        <td>od</td>
+        <td>do</td>
+    </tr>
+    <tr th:each="prac:${pracownicyList}">
+        <td th:text="${prac.imie}">imie</td>
+        <td th:text="${prac.nazwisko}">nazwisko</td>
+        <td th:text="${prac.nr_tel_kom}">nr_tel_kom</td>
+        <td th:text="${prac.rodzaj_pracown}">rodzaj_pracown</td>
+        <td th:text="${prac.zatrudnienie_od}">zatrudnienie_od</td>
+        <td th:text="${prac.zatrudnienie_do}">zatrudnienie_do</td>
+    </tr>
+</table>
+</body>
+</html>

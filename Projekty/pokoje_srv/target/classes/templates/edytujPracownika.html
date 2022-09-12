@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Zarządzanie pokojami</title>
+</head>
+<body>
+<h1>Dodaj nowego pracownika:</h1>
+<form action="#" th:action="@{/pracownikEdytowano}" th:object="${dane}" method="post">
+    Imie: <input type="text" th:field="*{imie}"><br>
+    Nazwisko: <input type="text" th:field="*{nazwisko}"><br>
+    Numer telefonu: <input type="number" th:field="*{nr_tel_kom}"><br>
+    Rodzaj pracy: <input type="text" th:field="*{rodzaj_pracown}"><br>
+    Zatrudniony od: <input type="date" th:field="*{zatrudnienie_od}"><br>
+    Zatrudniony do: <input type="date" th:field="*{zatrudnienie_do}"><br>
+    <input type="submit" value="Wyślij">
+    <input type="reset" value="Wyczyść">
+</form>
+</body>
+</html>

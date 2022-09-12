@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Zarządzanie pokojami</title>
+</head>
+<body>
+<h1>Dodaj nowy pokój:</h1>
+<form action="#" th:action="@{/pokojEdytowano}" th:object="${dane}" method="post">
+    Numer pokoju: <input type="number" th:field="*{nr_pokoju}"><br>
+    Adres budynku: <input type="text" th:field="*{budynek}"><br>
+    Numer telefonu: <input type="text" th:field="*{nr_tel}"><br>
+    Przeznaczenie: <input type="text" th:field="*{przeznaczenie}"><br>
+    Ilość biurek: <input type="number" th:field="*{ile_biurek}"><br>
+    <input type="submit" value="Wyślij">
+    <input type="reset" value="Wyczyść">
+</form>
+</body>
+</html>
