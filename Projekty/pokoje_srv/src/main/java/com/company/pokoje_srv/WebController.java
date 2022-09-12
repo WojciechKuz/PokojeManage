@@ -100,6 +100,26 @@ public class WebController
         model.addAttribute("dane", new Biurka());
         return "dodajBiurko";
     }
+    @RequestMapping("/table=EdytujPokoj")
+    public String edytujPokoj(Model model)
+    {
+        model.addAttribute("dane", new Pokoje());
+        return "edytujPokoj";
+    }
+
+    @RequestMapping("/table=EdytujPracownik")
+    public String edytujPracownika(Model model)
+    {
+        model.addAttribute("dane", new Pracownicy());
+        return "edytujPracownika";
+    }
+
+    @RequestMapping("/table=EdytujBiurko")
+    public String edytujBiurko(Model model)
+    {
+        model.addAttribute("dane", new Biurka());
+        return "edytujBiurko";
+    }
 
     //////////////////////////////////////////////////////////
 
@@ -110,6 +130,12 @@ public class WebController
         addRecord(dane);
         return "pokoje";
     }
+    @RequestMapping("/pokojEdytowano")
+    public String edytujRekord(@ModelAttribute Pokoje dane, Model model)
+    {
+        editRecord(dane);
+        return "pokoje";
+    }
 
     @RequestMapping("/pracownikDodano")
     public String dodajRekord(@ModelAttribute Pracownicy dane, Model model)
@@ -117,11 +143,23 @@ public class WebController
         addRecord(dane);
         return "pracownicy";
     }
+    @RequestMapping("/pracownikEdytowano")
+    public String edytujRekord(@ModelAttribute Pracownicy dane, Model model)
+    {
+        editRecord(dane);
+        return "pracownicy";
+    }
 
     @RequestMapping("/biurkoDodano")
     public String dodajRekord(@ModelAttribute Biurka dane, Model model)
     {
         addRecord(dane);
+        return "biurko";
+    }
+    @RequestMapping("/biurkoEdytowano")
+    public String edytujRekord(@ModelAttribute Biurka dane, Model model)
+    {
+        editRecord(dane);
         return "biurko";
     }
 

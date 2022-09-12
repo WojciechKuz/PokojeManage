@@ -5,7 +5,7 @@
     <title>Zarządzanie pokojami</title>
 </head>
 <body>
-<h1>Dodaj nowe biurko:</h1>
+<h1>Dodaj przypisanie do pokoju:</h1>
 <form action="#" th:action="@{/biurkoDodano}" th:object="${dane}" method="post">
     Zajęte od: <input type="date" th:field="*{zajete_od}"><br>
     Zajęte do: <input type="date" th:field="*{zajete_do}"><br>
