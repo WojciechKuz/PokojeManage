@@ -73,7 +73,7 @@ public class Pokoje {
         return "Pokoje{" +
                 "id=" + id +
                 ", nr_pokoju=" + nr_pokoju +
-                ", budynek=" + budynek +
+                ", budynek='" + budynek + '\'' +
                 ", nr_tel='" + nr_tel + '\'' +
                 ", przeznaczenie='" + przeznaczenie + '\'' +
                 ", ile_biurek=" + ile_biurek +
