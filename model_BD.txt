@@ -1,0 +1,21 @@
+POKOJE:
+	Integer id;
+    Integer nr_pokoju;
+    String budynek; // adres
+    String nr_tel;
+    String przeznaczenie;
+    Integer ile_biurek;
+PRACOWNICY:
+	Integer id;
+    String imie;
+    String nazwisko;
+    String nr_tel_kom;
+    String rodzaj_pracown;
+    Date zatrudnienie_od;
+    Date zatrudnienie_do;
+BIURKA:
+	Integer idb;
+    Date zajete_od;
+    Date zajete_do;
+    klucz_obcy pracownicy;
+    klucz_obcy pokoje;
