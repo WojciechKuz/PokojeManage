@@ -27,10 +27,6 @@ public class WebController
     @RequestMapping("/table=Pokoje")
     String WylistujPokoje(Model model)
     {
-        //testowa lista
-        //Pokoje[] temptab = {new Pokoje(1034,100, 5, "+48 224 444 444", "pomieszczenie gospodarcze", 1),
-        //        new Pokoje(519,101, 3, "+48 224 444 000", "serwerownia", 2)};
-
         List<Pokoje> listaPokoi = List.of(getPokoje());
 
         //Wypisanie zawartości na konsolę
@@ -200,7 +196,7 @@ public class WebController
     }
 
 
-
+    /*
     // POST - dodawanie i edycja
     @PostMapping("/pokoje/{mode}")
     Integer postRecord(@RequestBody Pokoje pok, @PathVariable String mode) {
@@ -241,6 +237,7 @@ public class WebController
         }
         return rv;
     }
+    */
 
     // PUT NIE MA! zamiast tego używać POST /{tabela}/edit
 
