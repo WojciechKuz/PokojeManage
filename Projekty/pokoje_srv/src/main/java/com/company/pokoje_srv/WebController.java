@@ -31,7 +31,7 @@ public class WebController
         //Pokoje[] temptab = {new Pokoje(1034,100, 5, "+48 224 444 444", "pomieszczenie gospodarcze", 1),
         //        new Pokoje(519,101, 3, "+48 224 444 000", "serwerownia", 2)};
 
-        List<Pokoje> listaPokoi = new ArrayList<>();
+        List<Pokoje> listaPokoi = List.of(getPokoje());
 
         //Wypisanie zawartości na konsolę
         System.out.println();
@@ -50,7 +50,7 @@ public class WebController
     @RequestMapping("/table=PracownicyTest")
     String WylistujPracownikow(Model model)
     {
-        List<Pracownicy> listaPracownicy = new ArrayList<>();
+        List<Pracownicy> listaPracownicy = List.of(getPracownicy());
 
         //Wypisanie zawartości na konsolę
         System.out.println();
@@ -67,7 +67,7 @@ public class WebController
     @RequestMapping("/table=BiurkaTest")
     String WylistujBiurka(Model model)
     {
-        List<Pracownicy> listaBiurka = new ArrayList<>();
+        List<Biurka> listaBiurka = List.of(getBiurka());
 
         //Wypisanie zawartości na konsolę
         System.out.println();
@@ -81,6 +81,9 @@ public class WebController
         return "biurka";
     }
 
+    /////////////////////////////////////////////////////////
+
+    //Mapping Formularza
     @RequestMapping("/table=DodajPokoj")
     public String dodajPokoj(Model model)
     {
@@ -88,6 +91,23 @@ public class WebController
         return "dodajPokoj";
     }
 
+    @RequestMapping("/table=DodajPracownik")
+    public String dodajPracownika(Model model)
+    {
+        model.addAttribute("dane", new Pracownicy());
+        return "dodajPracownika";
+    }
+
+    @RequestMapping("/table=DodajBiurko")
+    public String dodajBiurko(Model model)
+    {
+        model.addAttribute("dane", new Biurka());
+        return "dodajBiurko";
+    }
+
+    //////////////////////////////////////////////////////////
+
+    //Mapping wypełnionego formularza
     @RequestMapping("/pokojDodano")
     public String dodajRekord(@ModelAttribute Pokoje dane, Model model)
     {
@@ -106,20 +126,6 @@ public class WebController
     public String dodajRekord(@ModelAttribute Biurka dane, Model model)
     {
         addRecord(dane);
-        return "dodanoRekord";
-    }
-
-    @RequestMapping("/pracownikDodano")
-    public String dodajPracownika(Model model)
-    {
-        model.addAttribute("dane", new Pracownicy());
-        return "dodanoRekord";
-    }
-
-    @RequestMapping("/biurkoDodano")
-    public String dodajBiurko(Model model)
-    {
-        model.addAttribute("dane", new Biurka());
         return "dodanoRekord";
     }
 
