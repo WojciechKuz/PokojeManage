@@ -24,7 +24,7 @@ public class WebController
     public BiurkaRepo biurkaRepo;
 
     
-    @RequestMapping("/table=PokojeTest")
+    @RequestMapping("/table=Pokoje")
     String WylistujPokoje(Model model)
     {
         //testowa lista
@@ -47,7 +47,7 @@ public class WebController
 
 
 
-    @RequestMapping("/table=PracownicyTest")
+    @RequestMapping("/table=Pracownicy")
     String WylistujPracownikow(Model model)
     {
         List<Pracownicy> listaPracownicy = new ArrayList<>();
@@ -64,7 +64,7 @@ public class WebController
         return "pracownicy";
     }
 
-    @RequestMapping("/table=BiurkaTest")
+    @RequestMapping("/table=Biurka")
     String WylistujBiurka(Model model)
     {
         List<Pracownicy> listaBiurka = new ArrayList<>();
