@@ -231,7 +231,13 @@ public class WebController
         biurkaRepo.save(biu);
         return 0;
     }
-
+    void delRecord( String table, Integer id) {
+        switch(table) {
+            case "pokoje" -> pokojeRepo.deleteById(id);
+            case "pracownicy" -> pracownicyRepo.deleteById(id);
+            case "biurka" -> biurkaRepo.deleteById(id);
+        }
+    }
 
     /*
     // POST - dodawanie i edycja
@@ -278,7 +284,7 @@ public class WebController
 
     // PUT NIE MA! zamiast tego używać POST /{tabela}/edit
 
-
+    /*
     // DELETE
     @DeleteMapping("/{table}/{id}")
     void deleteRecord(@PathVariable String table, @PathVariable Integer id){
@@ -288,6 +294,7 @@ public class WebController
             case "biurka" -> biurkaRepo.deleteById(id);
         }
     }
+    */
 
     /* klient może wysłać:
     [WYŁĄCZONE] get - otrzymaj dane tabeli		/tabela
