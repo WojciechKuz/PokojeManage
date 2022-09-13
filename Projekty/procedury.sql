@@ -9,7 +9,7 @@ COMMENT ''
 BEGIN
 	DELETE
 	FROM pracownicy
-	WHERE TIMESTAMPDIFF(DAY, 'zatrudnienie_do', NOW());
+	WHERE TIMESTAMPDIFF(DAY, 'zatrudnienie_do', NOW()) < 1;
 END
  -- zdarzenie
 CREATE EVENT `del_event`
