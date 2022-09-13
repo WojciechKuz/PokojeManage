@@ -25,24 +25,14 @@ public class WebController
     public BiurkaRepo biurkaRepo;
 
     @RequestMapping("/menu")
-    String wyswietlMenu() {
+    String wyswietlMenu(Model model) {
         return "menu";
     }
 
 
-    //Usuwanie pracowników po przekroczeniu terminu zatrudnienia
-    /*
-    @Transactional
-    public void UsuwaniePracownikowPoTerminie()
-    {
-        Date dateNow = new Date();
-        List<Pracownicy> listaPracownicyDoUsuniecia = List.of(getPracownicy());
-        for (Pracownicy prac : listaPracownicyDoUsuniecia)
-        {
-            pracownicyRepo.deleteByZatrudnienieDoBefore(dateNow);
-        }
-    }
-    */
+    //Usuwanie pracowników po przekroczeniu terminu zatrudnienia - za pomocą procedury w BD
+
+
 
     @RequestMapping("/table=Pokoje")
     String WylistujPokoje(Model model)
