@@ -49,12 +49,7 @@ public class WebController
     {
         List<Pokoje> listaPokoi = List.of(getPokoje());
 
-        //Wypisanie zawartości na konsolę
-        System.out.println();
-        System.out.println("vvvvvvvvvvvvvvvvvvvvv");
-        listaPokoi.forEach(System.out::println);
-        System.out.println();
-        System.out.println("^^^^^^^^^^^^^^^^^^^^^");
+        System.out.println("wyświetlam pokoje");
 
         model.addAttribute("pokojeList",listaPokoi);
 
@@ -72,12 +67,7 @@ public class WebController
         //Pobieranie zaktualizowanej listy
         List<Pracownicy> listaPracownicy = List.of(getPracownicy());
 
-        //Wypisanie zawartości na konsolę
-        System.out.println();
-        System.out.println("vvvvvvvvvvvvvvvvvvvvv");
-        listaPracownicy.forEach(System.out::println);
-        System.out.println();
-        System.out.println("^^^^^^^^^^^^^^^^^^^^^");
+        System.out.println("wyświetlam pracowników");
 
         model.addAttribute("pracownicyList",listaPracownicy);
 
@@ -89,12 +79,7 @@ public class WebController
     {
         List<Biurka> listaBiurka = List.of(getBiurka());
 
-        //Wypisanie zawartości na konsolę
-        System.out.println();
-        System.out.println("vvvvvvvvvvvvvvvvvvvvv");
-        listaBiurka.forEach(System.out::println);
-        System.out.println();
-        System.out.println("^^^^^^^^^^^^^^^^^^^^^");
+        System.out.println("wyświetlam biurka");
 
         model.addAttribute("biurkaList",listaBiurka);
 
